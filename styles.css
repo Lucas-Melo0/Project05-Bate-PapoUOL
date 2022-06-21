@@ -1,0 +1,44 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;;
+}
+
+.login-page{
+    margin: auto;
+    width: 70vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-page img {
+    width: 130px;
+}
+
+.login{
+    height:15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.login input {
+    width: 63vw;
+    height: 6vh;
+    text-align: center;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    color: #AEAEAE;
+}
+.login button {
+    all:unset;
+    background-color: #E7E7E7;
+    width: 18vw;
+    height: 5vh;
+    text-align: center;
+    border-radius: 9px;
+}
