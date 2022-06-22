@@ -13,7 +13,7 @@
     <title>Bate Papo UOL</title>
 </head>
 <body>
-    <div class="login-page">
+    <div class="login-page hidden">
         <img src="./assets/logo 2.png">
         <div class="login">
             <input class="login-Name"placeholder="Digite seu nome">
@@ -21,12 +21,12 @@
         </div>
 
     </div>
-    <div class="container hidden">
+    <div  class="container">
         <div class="header">
             <img src ="assets/logo 2.png">
-            <ion-icon name="people"></ion-icon>
+            <ion-icon onclick="toggleSideBar()" name="people"></ion-icon>
         </div>
-        <div class="messages-board">
+        <div class="messages-board" onclick="unToggleSideBar()">
             <div class="message-template">
                 <div class="time">(09:22:28)</div>
                 <p class="message">Oi tudo bem?</p>
@@ -38,79 +38,54 @@
             <div class="message-template">
                 <div class="time">(09:22:28)</div>
                 <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">Oi tudo bem?</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">aaaaaa</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">sfsfdfsfdsf</p>
-            </div>
-            <div class="message-template">
-                <div class="time">(09:22:28)</div>
-                <p class="message">wiggle wiggle wieggle</p>
-            </div>
-            
+            </div>    
         </div>
         <div class="footer">
             <input placeholder="Escreva aqui...">
             <ion-icon name="paper-plane-outline"></ion-icon>
-
-        </div>
     </div>
+        </div>
+        <div class="side-bar">
+            <div class="side-container">
+                <div class="side-header">
+                    <p>Escolha um contato</p>
+                    <p>para enviar mensagem:</p>
+                </div>
+                <div class="contact-options">
+                    <div class="everyone">
+                        <ion-icon name="people"></ion-icon>
+                        <p>Todos</p>
+                    </div>
+                    <div class="contact-template">
+                        <ion-icon name="person-circle"></ion-icon>
+                        <p>User</p>
+                    </div>
+                    <div class="contact-template">
+                        <ion-icon name="person-circle"></ion-icon>
+                        <p>User</p>
+                    </div>
+                </div>
+                <div class="side-header">
+                    <p>Escolha a visibilidade:</p>
+                </div>
+                <div class="visibility-options">
+                    <div class="option-template">
+                        <ion-icon name="lock-open"></ion-icon>
+                        <p>Público</p>
+                    </div>
+                    <div class="option-template">
+                        <ion-icon name="lock-closed"></ion-icon>
+                        <p>Reservadamente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="go-back" >
+                <ion-icon name="arrow-undo-circle" onclick="unToggleSideBar()"></ion-icon>
+                <p onclick="unToggleSideBar()">Voltar</p>
+            </div>
+        </div>
+    
+    
    
     
 
