@@ -1,11 +1,13 @@
 /* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap');
-
+/* Tags configuration */
 body{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     background-color: #F3F3F3;
-    
+}
+ion-icon {
+    cursor: pointer;
 }
 /* Login Page */
 .login-page{
@@ -69,10 +71,8 @@ body{
     height: 53px;
 }
 .header ion-icon {
-    cursor:pointer;
     padding: 10px;
     font-size: 45px;
-    z-index: 1;
 }
 .messages-board {
     margin-top: 20px;
@@ -107,27 +107,28 @@ body{
     padding-left: 10px;
 }
 .footer ion-icon{
-    cursor:pointer;
     font-size: 27px;
     padding-right: 10px;
 }
 /* Side Bar */
 .side-bar{
-    width: 0vw;
+    width: 70vw;
     position: absolute;
     top:0;
-    right:0;
+    right:-70vw;
     height: 100vh;
     z-index: 1;
-    background-color: #ffffff;
-    display: none;  
+    background-color: #ffffff; 
+    transition: all linear 0.5s; 
+}
+.side-bar.visible {
+    right:0;
 }
 .side-container{
     height: 50vh;
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    
 }
 .side-header{
     display: flex;
@@ -145,13 +146,38 @@ body{
     display: flex;
     padding: 10px;
 }
+.contact-template p {
+    cursor: pointer;
+}
+.contact-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+.contact-container ion-icon:last-child{
+    color:#28BB25;
+    opacity: 0;
+}
+.contact-container.check ion-icon:last-child{
+    opacity: 1;
+}
 .option-template{
     display: flex;
     padding: 10px;
 }
-.visible {
-    display: initial;
-    width: 70vw;
+.visibility-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+.visibility-container ion-icon:last-child{
+    color:#28BB25;
+    opacity: 0;
+}
+.visibility-container.check ion-icon:last-child{
+    opacity: 1;
 }
 .opacity {
    opacity: 0.1;
@@ -160,6 +186,6 @@ body{
     display: flex;
     padding: 10px;
 }
-.go-back p, ion-icon{
+.go-back  p{
     cursor: pointer;
 }
