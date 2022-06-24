@@ -3,12 +3,14 @@
 /* Tags configuration */
 body{
     font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
     background-color: #F3F3F3;
 }
 ion-icon {
     cursor: pointer;
 }
+strong{
+    font-weight:bold;
+   }
 /* Login Page */
 .login-page{
     margin: auto;
@@ -19,6 +21,7 @@ ion-icon {
     align-content: center;
     justify-content: space-around;
     align-items: center;
+    overflow: hidden;
 }
 .login-page img {
     width: 130px;
@@ -90,6 +93,9 @@ ion-icon {
 .private {
     background-color: #FFDEDE;;
 }
+.message-template.status {
+    background-color: #DCDCDC;
+}
 /* Footer */
 .footer {
     background-color: #ffffff;
@@ -112,17 +118,18 @@ ion-icon {
 }
 /* Side Bar */
 .side-bar{
+    display: none;
     width: 70vw;
     position: absolute;
     top:0;
-    right:-70vw;
+    right:0;
     height: 100vh;
     z-index: 1;
     background-color: #ffffff; 
     transition: all linear 0.5s; 
 }
 .side-bar.visible {
-    right:0;
+    display: initial;
 }
 .side-container{
     height: 50vh;
