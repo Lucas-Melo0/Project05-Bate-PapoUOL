@@ -2,6 +2,7 @@ let userName,sideBar,container;
 let users = [];
 let usersObject = {};
 let participant_url = "https://mock-api.driven.com.br/api/v6/uol/participants";
+const MESSAGES_URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
 let loginAnswer = [];
 let messagesReceived = [];
 let messageDataCounter = 0;
@@ -26,8 +27,9 @@ function hideLogin(){
         let messagePage = document.querySelector(".container")
         messagePage.classList.remove("hidden")
         console.log(loginAnswer[0].status)
-        //setInterval(conectionStatus,5000)
+        setInterval(conectionStatus,5000)
         getMessages()
+        //setInterval(getMessages,3000)
     }
 
 function toggleSideBar(){
@@ -82,6 +84,7 @@ function statusMessage(){
     <div class="time">(${messagesReceived[messageDataCounter].time})</div>
     <p class="message"> <strong> ${messagesReceived[messageDataCounter].from}</strong> entrou na sala...</p>
     </div>`
+    messageBoard.scrollIntoView(false)
 }
 
 function publicMessage(){
@@ -90,6 +93,7 @@ function publicMessage(){
     <div class="time">(${messagesReceived[messageDataCounter].time})</div>
     <p class="message"> <strong>${messagesReceived[messageDataCounter].from} </strong> para <strong>${messagesReceived[messageDataCounter].to}:</strong> ${messagesReceived[messageDataCounter].text}</p>
     </div>`
+    messageBoard.scrollIntoView(false)
 }
 function privateMessage(){
     let messageBoard = document.querySelector(".messages-board");
@@ -97,8 +101,8 @@ function privateMessage(){
     <div class="time">(${messagesReceived[messageDataCounter].time})</div>
     <p class="message"> <strong>${messagesReceived[messageDataCounter].from} </strong> reservadamente para <strong>${messagesReceived[messageDataCounter].to}:</strong> ${messagesReceived[messageDataCounter].text}</p>
     </div>`
+    messageBoard.scrollIntoView(false)
 }
-
 
 // API functions
 function response (answer){
@@ -122,8 +126,7 @@ function badConection (response){
     console.log(response)
 }
 function getMessages(){
-    let messages_url = "https://mock-api.driven.com.br/api/v6/uol/messages";
-    let messagesData = axios.get(messages_url)
+    let messagesData = axios.get(MESSAGES_URL)
     messagesData.then(sucessGettingMessage)
     messagesData.catch(errorGetingMessage)
 }
@@ -136,4 +139,23 @@ function sucessGettingMessage(response){
 }
 function errorGetingMessage(response){
     console.log(response)
+}
+
+function sendingMessage(){
+    let contactReceiver = document.querySelector(".contact-container.check p").innerHTML
+    let message = document.querySelector(".message-sender").value
+    let messageType = document.querySelector(".visibility-container.check p").innerHTML
+        if (messageType === "Público"){
+            messageType = "message";
+        }
+        else if(messageType === "Reservadamente") {
+            messageType = "private_message"
+        }
+
+    let sendingMenssageApi = axios.post(MESSAGES_URL,{from:usersObject.name,to:contactReceiver,text:message,type:messageType});
+    sendingMenssageApi.then(getMessages);
+    sendingMenssageApi.catch(errorDebugging);
+}
+function errorDebugging(answer){
+    console.log(answer);
 }

@@ -90,7 +90,7 @@ strong{
     background-color: #ffffff;
     border-radius: 2px;
 }
-.private {
+.message-template.private {
     background-color: #FFDEDE;;
 }
 .message-template.status {
