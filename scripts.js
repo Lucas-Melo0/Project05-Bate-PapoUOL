@@ -23,7 +23,6 @@ function hideLogin(){
         loginPage.classList.add("hidden");
         let messagePage = document.querySelector(".container");
         messagePage.classList.remove("hidden");
-        console.log(loginAnswer[0].status);
         setInterval(conectionStatus,5000);
         getMessages()
         getActiveUsers()
@@ -101,7 +100,17 @@ function privateMessage(){
     messageBoard.scrollIntoView(false);
 }
 
-// API functions
+function triggerEnterKey(){
+let input = document.querySelector(".message-sender");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector(".button").click();
+            }
+    });
+}
+
+// API related functions
 
 function sendName(){
     let promise = axios.post(PARTICIPANT_URL,{name:userName});
@@ -111,7 +120,6 @@ function sendName(){
 }
 function response (answer){
     loginAnswer.push(answer);
-    console.log(loginAnswer);
     hideLogin()
 }
 function errorHandling(error){
@@ -135,9 +143,7 @@ function getMessages(){
     messagesData.catch(errorGetingMessage);
 }
 function sucessGettingMessage(response){
-    console.log(response);
     messagesReceived = response.data;
-    console.log(messagesReceived);
     selectingMessageType()
     
 }
@@ -147,7 +153,8 @@ function errorGetingMessage(response){
 
 function sendingMessage(){
     let contactReceiver = document.querySelector(".contact-container.check p").innerHTML
-    let message = document.querySelector(".message-sender").value;
+    let message = document.querySelector(".message-sender")
+
     let messageType = document.querySelector(".visibility-container.check p").innerHTML
         if (messageType === "Público"){
             messageType = "message";
@@ -156,9 +163,10 @@ function sendingMessage(){
             messageType = "private_message";
         }
 
-    let sendingMenssageApi = axios.post(MESSAGES_URL,{from:usersObject.name,to:contactReceiver,text:message,type:messageType});
+    let sendingMenssageApi = axios.post(MESSAGES_URL,{from:usersObject.name,to:contactReceiver,text:message.value,type:messageType});
     sendingMenssageApi.then(getMessages);
     sendingMenssageApi.catch(errorSendingMessage);
+    message.value = ""
 }
 function errorSendingMessage(){
     window.location.reload();
@@ -172,9 +180,10 @@ function getActiveUsers(){
 
 function listActiveUsers(activeUserData){
     onlineUsers = activeUserData.data;
-    console.log(onlineUsers);
-    renderActiveUsers()
-    
+    let message = document.querySelector(".message-sender").value;
+    if (message === ""){
+        renderActiveUsers()
+    }
 }
 function renderActiveUsers(){
     let contactOptions = document.querySelector(".contact-options");
@@ -194,5 +203,7 @@ function addMessageReceiver(contact){
     footer.innerHTML = `<div class="input-wrapper" data-required="Enviando para ${messageDestination}" >
     <input class="message-sender"placeholder="Escreva aqui...">
 </div>
-<ion-icon onclick="sendingMessage()"name="paper-plane-outline"></ion-icon>`
+<ion-icon class="button" onclick="sendingMessage()"name="paper-plane-outline"></ion-icon>`
+triggerEnterKey()
 }
+

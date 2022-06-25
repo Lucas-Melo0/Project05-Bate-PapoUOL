@@ -3,6 +3,7 @@
 /* Tags configuration */
 body{
     font-family: 'Roboto', sans-serif;
+    font-size: 14px;
     background-color: #F3F3F3;
 }
 ion-icon {
@@ -11,6 +12,12 @@ ion-icon {
 strong{
     font-weight:bold;
    }
+button {
+    background-color: #ffffff;
+    outline: none;
+    color: none;
+    border-width: 0px;
+}
 /* Login Page */
 .login-page{
     margin: auto;
@@ -67,7 +74,7 @@ strong{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 10%;
+    height: 80px;
     background-color: #ffffff;
 }
 .header img {
@@ -80,17 +87,31 @@ strong{
     font-size: 45px;
 }
 .messages-board {
-    margin-top: 35px;
+    margin-top: 90px;
     height: 70%;
 }
+.time{
+    padding-left: 5px;
+    min-width: 70px;
+}
+.message {
+    padding-left: 5px;
+}
+
 .message-template {
+    line-break: auto;
+    word-break: break-word;
     width: 100%;
     margin-bottom: 2px;
-    height: 5vh;
+    min-height: 5vh;
     display: flex;
     align-items: center;
     background-color: #ffffff;
     border-radius: 2px;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 .message-template.private {
     background-color: #FFDEDE;;
@@ -117,10 +138,10 @@ strong{
 .input-wrapper:after {
     content: attr(data-required);
     position: absolute;
-    width: 150px;
-    right: 33px;
+    width: 160px;
+    right: 0px;
     top: 170%;
-    font-size: 15px;
+    font-size: 14px;
     transform: translateY(-50%);
     color: #ccc;
 }
@@ -138,7 +159,7 @@ strong{
     position: fixed;
     top:0;
     right:-70vw;
-    height: 100vh;
+    min-height: 100vh;
     z-index: 1;
     background-color: #ffffff; 
     transition: all linear 0.5s; 
@@ -147,7 +168,7 @@ strong{
     right: 0;
 }
 .side-container{
-    height: 50vh;
+    min-height: 50vh;
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -159,10 +180,6 @@ strong{
 }
 .side-header p{
     font-weight: 700;
-}
-.everyone{
-    display: flex;
-    padding: 10px;
 }
 .contact-template{
     display: flex;
@@ -194,12 +211,18 @@ strong{
     align-items: center;
     padding-right: 10px;
 }
+.visibility-container p {
+    cursor: pointer;
+}
 .visibility-container ion-icon:last-child{
     color:#28BB25;
     opacity: 0;
 }
 .visibility-container.check ion-icon:last-child{
     opacity: 1;
+}
+.contact-container:hover,.visibility-container:hover,.go-back:hover{
+    background-color: #AEAEAE;
 }
 .opacity {
    opacity: 0.1;
