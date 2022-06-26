@@ -5,6 +5,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     background-color: #F3F3F3;
+    overflow: auto;
 }
 ion-icon {
     cursor: pointer;
@@ -17,6 +18,13 @@ button {
     outline: none;
     color: none;
     border-width: 0px;
+}
+span {
+    position: absolute;
+    margin-top: 380px;
+    color:crimson;
+    font-size: 14px;
+    text-align: center;
 }
 /* Login Page */
 .login-page{
@@ -163,6 +171,7 @@ button {
 }
 /* Side Bar */
 .side-bar{
+    overflow-y:visible;
     width: 70vw;
     position: fixed;
     top:0;

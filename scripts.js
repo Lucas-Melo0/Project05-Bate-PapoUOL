@@ -35,9 +35,12 @@ function hideLogin(){
     messagePage.classList.remove("hidden");
     let loader = document.querySelector(".loader");
     loader.classList.add("hidden");
+    
 }
 
 function activateLoader() {
+    let errorWarning = document.querySelector("span")
+    errorWarning.classList.add("hidden")
     let inputAndButton = document.querySelector(".login");
     inputAndButton.classList.add("hidden")
     let loader = document.querySelector(".loader");
@@ -138,7 +141,9 @@ function response (answer){
     initializeUser()
 }
 function errorHandling(error){
-    alert("Por favor digite um nome válido.");
+    let errorWarning = document.querySelector("span")
+    errorWarning.classList.remove("hidden")
+    
 }
 function conectionStatus() {
     let status_url = "https://mock-api.driven.com.br/api/v6/uol/status";
