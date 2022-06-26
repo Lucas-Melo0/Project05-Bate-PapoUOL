@@ -1,3 +1,4 @@
+// Global Variables
 let userName,sideBar,container,onlineUsers;
 let users = [];
 let usersObject = {};
@@ -6,8 +7,6 @@ const MESSAGES_URL = "https://mock-api.driven.com.br/api/v6/uol/messages";
 let loginAnswer = [];
 let messagesReceived = [];
 let messageDataCounter = 0;
-let teste;
-
 
 
 function getName(){
@@ -18,16 +17,32 @@ function getName(){
     sendName()
 }
 
+function activateLoader() {
+    let inputAndButton = document.querySelector(".login");
+    inputAndButton.classList.add("hidden")
+    let loader = document.querySelector(".loader");
+    loader.classList.remove("hidden");
+    
+}
+
+function initializeUser(){
+    activateLoader()
+    setTimeout(hideLogin,1500)
+    setInterval(conectionStatus,5000);
+    getMessages()
+    getActiveUsers()
+    setInterval(getMessages,3000)
+    setInterval(getActiveUsers,13000)
+
+}
+
 function hideLogin(){
         let loginPage = document.querySelector(".login-page");
         loginPage.classList.add("hidden");
         let messagePage = document.querySelector(".container");
         messagePage.classList.remove("hidden");
-        setInterval(conectionStatus,5000);
-        getMessages()
-        getActiveUsers()
-        setInterval(getMessages,3000)
-        setInterval(getActiveUsers,10000)
+        let loader = document.querySelector(".loader");
+        loader.classList.add("hidden");
     }
 
 function toggleSideBar(){
@@ -120,7 +135,7 @@ function sendName(){
 }
 function response (answer){
     loginAnswer.push(answer);
-    hideLogin()
+    initializeUser()
 }
 function errorHandling(error){
     alert("Por favor digite um nome válido.");
@@ -175,7 +190,7 @@ function errorSendingMessage(){
 function getActiveUsers(){
     let usersDataRequest = axios.get(PARTICIPANT_URL);
     usersDataRequest.then(listActiveUsers);
-    usersDataRequest.catch
+    
 }
 
 function listActiveUsers(activeUserData){
