@@ -13,17 +13,9 @@ function getName(){
     userName = document.querySelector(".login-Name").value;
     usersObject = {name: userName};
     users.push(usersObject);
-    console.log(users);
     sendName()
 }
 
-function activateLoader() {
-    let inputAndButton = document.querySelector(".login");
-    inputAndButton.classList.add("hidden")
-    let loader = document.querySelector(".loader");
-    loader.classList.remove("hidden");
-    
-}
 
 function initializeUser(){
     activateLoader()
@@ -37,13 +29,21 @@ function initializeUser(){
 }
 
 function hideLogin(){
-        let loginPage = document.querySelector(".login-page");
-        loginPage.classList.add("hidden");
-        let messagePage = document.querySelector(".container");
-        messagePage.classList.remove("hidden");
-        let loader = document.querySelector(".loader");
-        loader.classList.add("hidden");
-    }
+    let loginPage = document.querySelector(".login-page");
+    loginPage.classList.add("hidden");
+    let messagePage = document.querySelector(".container");
+    messagePage.classList.remove("hidden");
+    let loader = document.querySelector(".loader");
+    loader.classList.add("hidden");
+}
+
+function activateLoader() {
+    let inputAndButton = document.querySelector(".login");
+    inputAndButton.classList.add("hidden")
+    let loader = document.querySelector(".loader");
+    loader.classList.remove("hidden");
+    
+}
 
 function toggleSideBar(){
     sideBar = document.querySelector(".side-bar");
@@ -84,7 +84,7 @@ function selectingMessageType(){
         else if (messagesReceived[messageDataCounter].type === "message"){
             publicMessage()
         }
-        else if(messagesReceived[messageDataCounter].type === "private_message"){
+        else if(messagesReceived[messageDataCounter].type === "private_message" && messagesReceived[messageDataCounter].to === usersObject.name){
             privateMessage()
         }
     }   
