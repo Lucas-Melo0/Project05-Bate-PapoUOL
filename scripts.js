@@ -25,6 +25,7 @@ function initializeUser(){
     getActiveUsers()
     setInterval(getMessages,3000)
     setInterval(getActiveUsers,13000)
+    triggerEnterKey()
 
 }
 
@@ -207,7 +208,7 @@ function listActiveUsers(activeUserData){
 }
 function renderActiveUsers(){
     let contactOptions = document.querySelector(".contact-options");
-    contactOptions.innerHTML =`<div onclick="addCheckMark(this),addMessageReceiver(this)" class="contact-container">
+    contactOptions.innerHTML =`<div onclick="addCheckMark(this),addMessageReceiver(this)" class="contact-container check">
     <div class="contact-template"><ion-icon name="people"></ion-icon><p>Todos</p>
     </div><ion-icon name="checkmark-outline"></ion-icon>`
     for (let i = 0; i < onlineUsers.length; i++){
